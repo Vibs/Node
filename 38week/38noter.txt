@@ -1,0 +1,103 @@
+Lav ny server
+    - lave en fil: package.json
+        - lav curly brackets i filen!!! Ellers er det ikke valid JSON i filen
+        - skriv i konsollen (i mappen hvor package.json ligger):
+            npm install express
+        ELLLLLLER
+        - indsæt (for at hente express):
+            {
+                "dependencies": {
+                    "express": "4.17.1"
+                }
+            }
+    - cd. hen til projektets rod-mappe - samme mappe som package.json ligger i 
+        - skriv i konsollen: npm install 
+    - lav ny fil: app.js
+        - skriv i filen: 
+            const express = require("express");      // importerer selve biblio som gemmes i var
+            const app = express();        // instantierer
+
+            app.listen();   // NEDERST
+    - før man implementerer et endpoint, så vil browseren hvis man prøver at gette, reagere med: CANNOT GET
+
+REST
+    - i et REST-API vil vi have
+    - res.send() == den udfylder selv headers - 
+
+
+
+Pakker i node.js
+    - problemer:
+        - alle kan lave pakker
+        - pakker er tunge: det gør processen tung hvis man skal hente dem ned
+    - han vil ikke have vi bruger så mange, fordi de kan fejle mega mange 
+        - folk bliver mere og mere enige om at gå væk fra det
+    - der er super gode Date-pakker
+        - Moment.js == super gooood
+
+
+Express
+    - når man importerer/requierer en selvlavet resource skriver vi:
+        const noget = require("./noget.json");
+    
+        ./ == HER hvor jeg er
+            - bruger vi når man skriver express er det første sted den kigger i node_modules 
+            - - derfor skal man guide stien derfra 
+    - extensions når man requirer er optional (dvs. .json) - man kunne altså godt sige: "./cake" 
+        - MEN DET ER SMART AT SKRIVE DET - der kunne jo ske fejl og det er også meget rart at 
+
+nodemon
+    - er kun til development
+    - indtil videre har vi brugt node kommandoen til at køre vores app (dvs. vi har brugt det som built tool og run toll)
+    - == den detecter når man ændrer noget i filen og genkører node applikationen
+    - installeres på 2 måder:
+
+        npm install -g nodemon 
+            -g == globalt == dvs. vi installerer nodemod OVER DET HELE (og det vil vi gerne - why not)
+                - hvis vi ikke installerede det globalt ville den installere det lokalt i node_modules-mappen i det tilhørende projekt som man kører kommandoen i
+            - globale pakke ligger ét sted på computeren
+                - så node vil altid kigge opad i systemet og lede efter det der
+            - hvis det ikke virker så sig sudo
+            - nodemon.cmd --version
+        ELLER
+        en anden gammel
+            dette er en ældre metode though
+
+    - nu kan vi køre filerne ved at sige:
+        nodemon.cmd app.js
+
+Loops
+    - for each
+    - enhanced for loop vil han kalder det:
+
+
+
+
+Other
+    - man kan skrive unicodes
+
+
+I 37week/Our_First_Server
+    app.post("/messages", (req, res) => {
+
+    
+        console.log(req.body);
+        res.send({
+
+        });
+
+    });
+
+    - når clienten sender data til os ligger det i http-body'en
+    - hvorfor printer dette undefined? - fordi vi ikke har sat express op til at parse body som json
+    - DERFOR er det godt at vi ikke importerer og instantierer express i ét statement - vi skal i stedet:
+        const express = require("express");
+        const app = express();
+    - SÅ VI KAN SIGE:
+        - app.use(express.json());          
+        - Fordi vi skal bruge en bodyParser - men denne er nu forældet og inkluderet i Express - så der kan vi sig:
+            app.use(express.json()); 
+                == brug express til at parse min body som json
+        - Når vi har sat express til at parse body som json - så vil req.body i stedet returnere {} i stedet for undefined
+
+

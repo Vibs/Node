@@ -2,6 +2,7 @@
 //¤ Arrays, for loops
 // --------------------------------------
 /// Exercise 1 - Array Positioning
+//+ push og pop
 
 const letters = ["a","b","c"];
 // show b in the console 
@@ -31,6 +32,9 @@ const f3 = {
 
 friends.push(f1, f2, f3);
 
+// ELLER
+friends.push({name: "Philip"}, {name: "Signsken"}, {name: "O"});
+
 console.log(friends);
 
 
@@ -42,8 +46,7 @@ const significantMathNumbers = [0, 2.718, 3.14159, 1729];
 // You want to programmatically find where the number 1729 is in the array.
 // programmatically means that no finger counting allowed. There is a method for this (finding index based of value). 
 
-const index = significantMathNumbers.indexOf(1729);
-console.log(index);
+console.log(significantMathNumbers.indexOf(1729));
 
 // --------------------------------------
 /// Exercise 4 - Inserting elements
@@ -52,6 +55,10 @@ const diet = ["tomato", "cucumber", "rocket"];
 
 // You are a programmer. In one line (one statement) insert hamburger, soda and pizza between the elements cucumber and rocket
 
+//+ splice == gør at man kan sætte ting ind i et array
+// diet.indexOf("rocket") == indextallet hvorpå jeg skal sætte elementer ind
+// 0 == antallet af elementer der skal slettes
+// resten: de elementer der skal indsættes
 diet.splice(diet.indexOf("rocket"), 0, "hamburger", "soda", "pizza");
 
 console.log(diet);
@@ -75,9 +82,29 @@ console.log(diet);
 // You really like your daily diet from last exercise. Copy it to a new array called dinnerTray so you can give it to a friend.  
 
 // på denne måde bliver arrayet kopieret i stedet for at man referer til det samme 
+// + spread operator == tager indholdet fra datatstrukturen via ...diet - ved [] siger vi at det skal kommes over i et array
+// spread operatoren tager det som står INDENI arrayet og hiver det ud: ...diet
+// [] == vi pakker dataten ind i et nyt array
 const dinnerTray = [...diet];
+// med denne kopierer man IKKE men får den til at referere til det samme
+// den er DÅRLIG
+// const dinnerTray = diet;
+
+// ELLER
+const dinnerTray1 = Array.from(diet);
 
 console.log("dinnerTray", dinnerTray);
+
+//+ spread operator eksempel!!!
+const person = {
+    name: "Vibe",
+    age: 26};
+
+const copiedPerson = {...person};
+
+console.log(person);
+console.log(copiedPerson);
+
 
 // --------------------------------------
 /// Exercise 7 - For loop
@@ -86,7 +113,7 @@ const lettersExpanded = ["a","b","c", "d", "e", "f", "g", "h"];
 
 // log every second char in the array starting from b
 
-for(let i = 1; i < lettersExpanded.length; i = i + 2){
+for(let i = 1; i < lettersExpanded.length; i+=2){
     console.log(lettersExpanded[i]);
 }
 
@@ -110,4 +137,5 @@ console.log("discardedNumbers", discardedNumbers);
 
 // --------------------------------------
 
+//push + pop
 

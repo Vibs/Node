@@ -1,0 +1,126 @@
+KODE FORTSÆTTER I 36week --> functions.js
+
+
+TERMINAL
+Kør en fil: 
+    - guide hen til filens placering via cd
+        - evt. ls for at tjekke at vi står i den rigtige mappe med den fil vi vil køre
+    - node [filnavn.js]
+npm --version
+    -   - == tjekker om vi har npm installeret, hvilket vi har, fordi det kom da vi downloadede node
+
+Node:
+    - at vi kan køre js på en maskine og ikke KUN i en browser
+    - vi tager v8-engine (som er ) - i stedet for at js KUN kan køre i v8 i browseren
+    - v8 = js-engine
+    - grunden til at vi vil hente det væk fra browseren == så kan vi lave ting som IKKE er browserspecifikke: fx servere, scripts
+
+
+
+npm (vs Yarn - der er ikke rigtig nogen forskel mellem de to - yarn bruger npm, nogle af de ting de har lavet) 
+    - == node package manager
+        - package = dependencies = package modules
+    - gør det samme som et build tool (så er lidt ligesom maven)
+    - i npm og node har vi en package.json-fil (som svarer til hvad pom.xml-filen er for maven)
+        - scripts (ikke mappet ift. applikationslivscyklus, som build steps er i maven)
+            - det er bare noget man kan køre
+    - vi kommer til at lære npm
+    - npm install
+
+
+BUILD TOOLS
+- gradle, maven, NuGet, pip, npm
+hvad er maven?
+    - pom.xml 
+        - er entry-pointet for maven - i den kan vi definere dependencies
+        - metainformationman kan skrive navnet på projektet - som er artifaktnavnet
+        - build steps --> der findes præ og post-build steps
+
+
+BEGREBER
+Callback = callcenter-idéen: vi ringer tilbage til dig når VI er ledige
+    - vi bruger det så vi ikke blokerer os selv - så ting ikke holder i kø
+
+
+package.json
+    - vi har én pr. program
+    - for at det er en rigtig json skal der være brackets
+    - denne fil SKAL vi have for at kunne sige npm install i terminalen
+        - kommandoen for at installere
+        - cd hen til den mappe hvori vi har lavet package.json-filen
+        - den kommando laver en package-lock.json-fil
+            - det er en trash-fil som vi åbenbart ikke skal bekymre os om?
+            - den har traditionelt ikke eksisteret, men den kom ind for få år siden, fordi det løste et eller andet problem
+            - indeholder info omkring hvad der blev installeret - hvis man har problemer med at kode kører på min comp men ikke din, så kan det være der er en forskel
+    - den SKAL hedder package.json
+         - (ligesom pom.xml)
+    - SKAL ligge i root
+    - man kan ikke skrive kommentarer i det - fordi så er det langsommere at parse det (fordi der er meget data som sende sådan)
+        - men Anders drømmer om det 
+    - MAn skriver:
+        - meta-data
+        - dependencies
+        - noget tredje
+
+
+Express
+    - et bibliotek til at lave servere
+    - dette kursus er baseret på express
+    - == "det laver servere som udstiller api'er"
+    - "Fast, unopinionated, minimalist web framework for node."
+    - han sammenligner det med spring
+    - MEGET brugt
+    - installeres via: npm install express
+    - installer det manuelt:
+        - tilføj dependency i package.json
+            {
+                "dependencies": {
+                    // syntax: "package name: " "version"
+                    "express": "4.17.1"
+                }
+            }
+            - og så kør det via npm install - så henter den dependencies
+        - når man gør dette så installerer den node-modules - her kan man gå ind og kigge på express
+            og på express biblioteket
+            - node modules == det er bare der hvor filerne for bibliotekerne er 
+            - så når vi installerer express, så kommer det til at ligge i node_modules -
+            - så hvis man sletter node_modules, så sletter man de dependencies
+    - når man definerer et endpoint i express, så skal det starte med /
+        fx: 
+        app.get("/frontpage")
+        IKKE
+        app.get("frontpage")
+
+Client Server
+    - request = kommer fra Client
+    - response = sendes fra server
+
+
+REST
+    - i REST-API'er vil vi gerne sende JSON tilbage (selvom man kan godt KAN sende andre datatyper tilbage)
+
+URL består af: 
+    - protocol
+    - subdomain
+    - domain
+    - top-level domain
+    - port 
+    - endpoint path route
+    - path variable
+    - query string
+
+REST API'er
+    - dataen som sendes tilbage er json-obj
+    - følger koventioner for hvordan endpointet skal se ud
+    - opgave: vi skal dokumentere hvad hvert endp
+    - en måde at kombinere http-metoder og endpoints på
+
+
+Http methods
+    - GET == retrieves element/s 
+    - POST == creates element/s 
+    - PATCH == opdaterer et element delvist
+    - PUT == sender helt nyt obj som erstatter HELE elementet
+    - DELETE == delete
+
+

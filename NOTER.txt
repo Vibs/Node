@@ -1,0 +1,45 @@
+snakecase == det_er_dette
+
+Callback 
+    - callcenter-idéen: vi ringer tilbage til dig når VI er ledige
+    - vi bruger det så vi ikke blokerer os selv - så ting ikke holder i kø
+
+Javascript
+    - der er ASI (automatic semicolon insertion) == dvs. vi ikke behøver skrive kolon, men man må godt
+
+Han foretrækker at vi helst ikke bruger eksterne biblioteker
+
+Ting vi skal tænke på
+    - hvor skal vi placere vores variable? - de skal placeres så det er så optimeret som muligt
+
+Funktionel programmering
+    - her ønsker vi at have alt i pure funktioner
+    - funktionelle
+        - for
+            - 
+        - for each
+            - hvis man ikke skal gøre noget med dataen bagefter
+        - map()
+            - ændrer alle el på en liste - returner en ny liste
+        - filter()
+            - filtrere ting fra på baggrund af et predicate - returner en ny liste med dem som 'gik igennem'
+        - reduce()
+            - kan mappe, filter og akkumulere
+
+Lambda:
+    - i inline lambda er return implicit
+
+Http
+    - 8080 er default for http-webdev
+    - http-metoder mappes med endpoints
+        - og vi følger rest-konventionerne - det er smart fordi så siger 
+        - d
+
+
+REST - MySQL
+    - hvis et endpoint er: /dankmemes, så hedder collectionen eller sql-tabellen også dankmemes - fordi de SKAL være i flertal 
+
+
+Databaser
+    - lad være med at arbejde med blob - gem hellere en url som peger på en filserver 
+        - det kan være en intern filserver som indeholder billederne

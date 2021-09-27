@@ -9,15 +9,17 @@ const myObj = {"message": "Hello, earthling! I bring peace."};
 
 console.log(myObj.message); //+ den bedste
 //* eller
-console.log(myObj["message"]);
+console.log(myObj["message"]); // squarebracket notation
 
 // --------------------------------------
 //// Exercise 2 - Defining an object. 
 // Create an object that has your name and age. 
 
+//+ i json skal der være quotation marks omkring key'en
+//+ i js behøver der ikke være det - så lad være!!! som her
 const me = {
-    "name": "Vibe Helene Jensen",
-    "age": 25
+    name: "Vibe Helene Jensen",
+    age: 25
 };
 
 console.log(me);
@@ -37,7 +39,7 @@ console.log(stackOverflow);
 // --------------------------------------
 //// Exercise 4 - Remove a property 
 
-const thisSong = {"description": "The best song in the world."}
+const thisSong = {description: "The best song in the world."}
 
 // remove the property "description" and add a property called "about" that should say "Just a tribute." 
 
