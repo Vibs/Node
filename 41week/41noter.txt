@@ -1,0 +1,61 @@
+
+ASYNC
+- Når vi laver et fetch, laver vi et promise
+- HVorfor får vi et promise tilbage, fordi fetch er async 
+    - den er async fordi vi ikke kan regne ud på forhånd, hvornår vi får dataen - vi kan ikke regne ud hvor langsom/hurtig serveren vi får dataen serveret fra er
+    - så giver vi den nogle lambda'er som bliver kaldt når dataen er hentet
+- I java kører koden sekvensielt - sådan virker det ikke når vi gør det i en browser (som js bliver udført i)
+    - så i js giver det ikke mening kun at håndtere en linje ad gangen 
+    - callbacks er løsningen til al asynkron opførsel - det er callbacksne som sørger for at vores kode bliver kørt når vi får noget brugerinput i browseren 
+-Hvornår sker noget ellers async?
+    - når vi inteagerer med en db - den kan være hostet på samme maskine eller over et netværk - men uanset hvad, så tager det tid, og man kan ikke sige hvor længe det tager
+    - så vi håndterer også ting asynkront, når vi henter noget fra eller lægger noget ned i en db
+    - når vi får user inputs
+    - I/O generelt (input/output) - når vi læse fra og skriver til filer
+
+
+Javascript
+    - er singlethreaded - kører kun på én tråd -  der findes 
+
+html er client
+
+Node
+    - node er serverside - det er ikke clientside
+    - bygget på callback-funktioner
+    - det er callback på callback på callback - der er et loop i mainthreaden (programmet) som bare kører og kører
+        - callback-hell == pyramid of doom - når man har callback på callback osv. - 
+            - løses ved Promises - syntaktisk sugar, som gør det nemmere at skrive/håndtere
+
+Promises
+    - under the hood er Promises egentlig callbacks, men det er nemmere at skrive/læse end callback-hell
+    - det virker nemmere bare at sige .then end at skrive en hel masse
+    - kan være i 2 states:
+
+        1. pending
+            - i gang med at blive udført
+        2. full-filled
+            - når det er blevet
+            - 2 tilstande af full-filled:
+                - resolved
+                    ELLER
+                - rejected
+    - promises er IKKE bedre end callbacks - fordi det promise ER et callback - det er KUN syntaktisk sugar == altså en nemmere/mere overskuelig måde at skrive det på
+    
+
+async await
+    - bygger på promises
+    - bare syntaktisk sugar == æstetik
+    - det er det samme som callbacks men pænere at skrive en en masse callbacks
+
+GENERELT IKKE MIX PROMISES OG AWAIT - det er lige meget for ham hvilken vi bruger (vi skal self kunne begge dele), men bare vi er konsistent
+
+
+Server/client
+    - servere kan også agerere som clienter for andre servere
+    - fetch eksisterer ikke i node - det er en brwoser-ting
+
+// vi skal få den til at 
+
+
+fetch
+    - installer fetch i node med: npm install node-fetch

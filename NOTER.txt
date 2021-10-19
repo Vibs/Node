@@ -1,3 +1,7 @@
+Anders kalder:
+    - terminal == den i vs code
+    - console == den i browser
+
 snakecase == det_er_dette
 
 Callback 
@@ -43,3 +47,7 @@ REST - MySQL
 Databaser
     - lad være med at arbejde med blob - gem hellere en url som peger på en filserver 
         - det kan være en intern filserver som indeholder billederne
+
+
+Eksamen:
+    - INGEN frameworks til eksamen! Fordi der kan bare komme rod i det!

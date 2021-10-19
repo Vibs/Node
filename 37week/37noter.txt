@@ -122,5 +122,3 @@ Http methods
     - PATCH == opdaterer et element delvist
     - PUT == sender helt nyt obj som erstatter HELE elementet
     - DELETE == delete
-
-
