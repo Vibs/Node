@@ -1,0 +1,33 @@
+I dag: handler meget om struktur
+    - hvordan splitter man app.js op i routers?
+        - routers? filer som indeholder routes 
+    - public-mappen = vores client-mappen
+    - routers
+    - forståelse for hvordan man henter data
+        - fethc
+        - innerHTML - hvordan man escaper det ordentligt
+
+hvad skal man ikke pushe i sit node-projekt?
+    - node-modules
+        - det kræver
+    - skjulte filer - fx. .idea og vscode
+        - hvorfor skal man ikke pushe disse?: Mit environment skal ikke tvinge andre til at have det samme!
+
+
+
+    - npm i 
+
+
+
+NAVBAR
+     - html-
+        - man hiver html ud og injecter
+    fetch('../sidebar/sidebar.html')
+      .then(data => data.text())
+      .then(html => document.getElementById('sidebar-placeholder').innerHTML = html);
+
+ARBEJDE VIDERE PÅ NODEFOLIO - i weeek 41
+
+frontpage
+    - i stedet for at fokusere på at style footeren, så fokuserer vi på at style vores main-content
+        - vi giver den en min-height

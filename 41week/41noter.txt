@@ -25,6 +25,21 @@ Node
     - det er callback på callback på callback - der er et loop i mainthreaden (programmet) som bare kører og kører
         - callback-hell == pyramid of doom - når man har callback på callback osv. - 
             - løses ved Promises - syntaktisk sugar, som gør det nemmere at skrive/håndtere
+    - For at lave et node-projekt SKAL vi have en package.json-fil
+
+package.json
+    - npm init == laver en package.json
+        - navn
+        - version: fx 0.0.1
+        - description
+        - entry point: app.js (men behøver man ikke skrive)
+        - repository
+        - keywords: 
+        - author
+        - licence: MIT
+        - 
+    - dependencies, scripts
+    
 
 Promises
     - under the hood er Promises egentlig callbacks, men det er nemmere at skrive/læse end callback-hell
@@ -59,3 +74,6 @@ Server/client
 
 fetch
     - installer fetch i node med: npm install node-fetch
+
+
+// npm i -save-dev cross-env
