@@ -1,0 +1,21 @@
+
+
+loopmetoder
+    - map == automatisk parallelliseret
+    - 
+
+
+one-line
+    hvis man gør det som en one-liner - så retunrer lambda-expressionet 
+
+
+Mandatory:
+
+
+I express kalder man mappen til frontend for public
+    - fordi at vi siger: det her må godt tilgås: det er offentligt materiale
+
+
+- app.js er vores server
+- vores html er vores frontend
+
