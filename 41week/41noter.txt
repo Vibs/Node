@@ -77,3 +77,10 @@ fetch
 
 
 // npm i -save-dev cross-env
+
+
+
+//¤ UGE 42
+
+hvornår starter nodemon.json filen? Når vi starter nodemon??
+pga. det vi skriver inde i den fil: så starter nodemon serveren, når vi redigerer i filen

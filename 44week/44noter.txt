@@ -1,0 +1,44 @@
+ // sådan redirecter man:
+    // res.redirect("/contact");
+
+Mandatory
+    - notifikationer er nu en del af det - ingen alerts - 
+        - toastr - kom den i nav.html, hvis jeg vil bruge den på andre sider end kun contact-siden
+
+    - render.js
+        - vi bruger den til at tilføje ting til nav.html'en dynamisk, alt efter hvilken side det er - kig evt. på Anders'
+    - vi skal bruge en relationel database 
+        - hvad vil være godt som relational db til nodefolio == fx sqlLight - embedded db
+        - vi skal store data: -  projekter og login-oplysninger til den ene adminbruger
+    - vi skal tilføje db til gitignore!!!!! Det skal ikke pushes til git, fordi så kan alle jo se det - login oplysninger skal i hvert fald ikke
+
+    
+SQL Lite
+    - tillader dig at have en db gennem en fil 
+    - (fx som mobilapp ville det jo være for sindssygt hvis man skulle installere en hel db til hver enkelt mobile app)
+    - vi skal installere driver 
+    - vi skal installere ... fordi den er en wrapper til sql-lite
+    // npm i sqlite3 sqlite 
+    https://www.sqlitetutorial.net/sqlite-nodejs/connect/
+
+
+HVorfor kalder vi den ikke index.html men frontpage?
+    - serve static i express 
+
+destructuring == Læs op på deeeeeeeet!!!
+
+
+
+Script i package.json
+    - Når man tilføjer et script i package.json, så siger man at den kommando skal køres når app.js køres (tror jeg)
+    "scripts":{
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "create-sqlite-db": "node ./database/createSqliteSchema.js"
+    } ,
+
+
+LEKTIER
+    - implementer endpoint i games.js så den kan interagere med db
+    - skriv deadline ind i kalender: d. 28
+
+
