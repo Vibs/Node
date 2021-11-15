@@ -2,6 +2,31 @@ Anders kalder:
     - terminal == den i vs code
     - console == den i browser
 
+
+Hvorfor er det vi sender filer via fs?? og ikke bare bruger sendFile()?
+    - det har et eller andet at gøre med hvor filen og det bliver fortolket
+        og jeg TROR at når vi burger fs så bliver den fortolket serverside
+
+EKSAMEN 
+    - INGEN frameworks til eksamen! Fordi der kan bare komme rod i det!
+    - vi skal kunne sætte en router op udenad
+
+
+
+Webcrawler
+    - noget google search engine ting - den leder efter ting - 
+
+FEJL
+    - forbidden/not found-errors = 
+        - betyder jeg må ikke tilgå den fil som er højere oppe i systemet
+        - løses af modul som findes i node: path
+            res.sendFile(path.join(__dirname + "/../public/pages/frontpage/frontpage.html"));
+                eller man kan bruge komma i stedet for plus for at konkatenere
+            res.sendFile(path.join(__dirname, "/../public/pages/frontpage/frontpage.html"));
+        - MEN sendFile()
+
+    - cannot find proporty of undefined
+
 snakecase == det_er_dette
 
 Callback 
@@ -48,6 +73,3 @@ Databaser
     - lad være med at arbejde med blob - gem hellere en url som peger på en filserver 
         - det kan være en intern filserver som indeholder billederne
 
-
-Eksamen:
-    - INGEN frameworks til eksamen! Fordi der kan bare komme rod i det!

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!--
+    LØSNING 1 - det er frontend løsning
+        Vi importerer vores lib FØR de andre script-filer, 
+    som gør brug af de bib-funktioner
+    Det skal vi fordi at browseren parser html linje for linje
+    Vi kan ikke kalde en funk som ikke er defineret endnu - derfor skal bib stå først
+        man behøver ikke importere dem 
+    Ulempe: 
+
+    LØSNING 2 - det er frontend løsning
+    MEN der er problemer ved at være bundet af rækkefølgen
+    Dette kommer vi ud af ved at gøre dem til moduler: type="module"
+    Når man laver noget til et module, så gør det at man NETOP IKKE bare kan kalde funktioner og bruge var på tværs af filer UDEN at importere dem
+    Vi skal altså nu sige: export foran de ting som vi vil eksportere fra lib-modulet
+    Ulempe: vi skal enten bruge løsning 3 eller 4, fordi browser har svært ved module - den fortolker filstedet
+
+    LØSNING 3 eller 4 - backend løsning
+    - vi kan serve moduler via express
+         - så skal man skrive "type": "module" i package.json
+    -ulempe: mange bib er ikke lavet til at man kan bruge "type": "module"
+        - MEN Anders siger det måske er fremtiden
+    - det smarte:
+        - vi kan eksportere og importere ting mellem frontend og backend frit
+
+    eller noget til at transpile det, så vi ikke bruger module - fordi det har browseren ike så nemt ved at forstå
+    -->
+    <script type="module" src="cakeLib.js"></script>
+    <script type="module" src="main.js"></script>
+    
+</body>
+</html>
