@@ -1,0 +1,29 @@
+{
+  "name": "nodefolio",
+  "version": "0.0.1",
+  "description": "My personal portfolio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vibs/Node.git"
+  },
+  "keywords": [
+    "Node.js"
+  ],
+  "author": "Vibe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vibs/Node/issues"
+  },
+  "homepage": "https://github.com/Vibs/Node#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
