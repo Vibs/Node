@@ -1,3 +1,7 @@
+// her får jeg adgang til de variabler som jeg har oprettet i .env
+import dotenv from "dotenv";
+dotenv.config();
+
 // fordi vi har sagt: "type": "module" i package.json skal vi nu sige:
 
 import express from "express";
@@ -44,6 +48,44 @@ app.use(sauceRouter);
 import gamesRouter from "./routers/games.js";
 
 app.use(gamesRouter);
+
+
+
+
+import connection from "./database/connectMysql.js";
+
+
+app.get("/schools", async (req, res) => {
+    const schools = await connection.execute("SELECT * FROM schools");
+    /*array af to arrays, og det andet array indeholder nogle columns
+    Hvis der findes noget med key'et schools, så ville denne linje destructure: const { schools } = ....
+    Der findes en ANDEN destructuring syntax: som siger: det på 0 plads af schools : const [rows, columns] = .....*/
+    
+    res.send(schools);
+});
+
+app.post("schools", async (req, res) => {
+    /**
+    man behøver ikke skrive navnene på alle kolonnerne, hvis at man overfører en værdi til ALLE kolonner:
+    hvis forholdet mellem kolonner i db og de data man overfører er det samme kan man bare skrive () og ikke (name, id, osv)
+    denne linje er ikke sikker mod sql injection - vi tager bare råt imod whatever data vi får fra clienten:
+        const school = await connection.execute(`INSERT INTO schools VALUES ('${req.body.schoolName}')`);
+    Vi forventer at vi får et obj som sår sådan ud: {schoolName: "CBS"}
+    Løsningen er at vi skal escape det! Via PreparedStatement!!! - vi indsætter de potentielt usikre data via spørgsmålstegn og så tjekker den selv for injection
+    
+     */
+
+
+    const school = await connection.execute(`INSERT INTO schools VALUES ('${req.body.schoolName}')`);
+
+
+})
+
+/*
+callback == en funktion som bliver giver som paramter til en anden funktion
+= det at man giver en funktion ivdere til en anden funktion - og den bliver så MULIGVIS kaldt med det samme eller senere
+
+*/
 
 
 

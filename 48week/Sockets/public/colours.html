@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="color" id="input-colours">
+
+    <!--src'en fordi på denne src kan man få info omkring socket.io-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // dett er er client-socketen som forbinder til serveren - de forbinder til hinanden
+        const socket = io();
+
+        // 
+        document.getElementById('input-colours').addEventListener("change", submitColor);//samme som == (event) => submitColor(event));
+
+        function submitColor(event){
+            console.log("test", event.target.value); // får farven ud
+
+            // client-socket'en sender nu farven til serveren
+            // "a client chose a colour" == event!!! - nu får vi den til at lytte på det event over i app.js
+            socket.emit("a client chose a colour", event.target.value);
+
+
+        }
+
+        // denne reagerer på eventet: "the server is sending the new color", som bliver emittet fra serveren
+        socket.on("the server is sending the new color", (color) => {
+            console.log("the server responded with the new color", color);
+            document.body.style.backgroundColor = color;
+        })
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

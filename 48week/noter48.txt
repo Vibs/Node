@@ -1,0 +1,195 @@
+LÆS I 48week --> Sockets --> app.js!
+
+relational databases
+    - her har vi brugt sqlite
+    - der findes to pakker
+
+    - jdbc = en driver som hjælper os med at connecte til databasen
+        - java database connectivity
+        - det gør bare at vi kan connecte dertil
+
+    - der findes andre myql pakker som er drivere som gør at vi kan forbinde til mysql og forbinde queries til den
+    - vi har IKKE en myql database i node: Vi har en driver som forbinder til sql mysql og kører dataen et eller andet sted hen
+
+npm == wild west hvor alle bare kan lave ting til - og så ved man bare sådan af erfaring at 
+
+npmjs.com  
+    - mysql
+        - brug enten det eller:
+    - node mysql2
+        - er bare lavet af en gruppe mennesker, som havde lyst til at lave det
+        - supporter promises
+        INSTALLER VIA: npm i mysql2
+        - han bruger lige mysql2 fordi det er nice at det supporter promises
+
+
+
+
+
+callback == en funktion som bliver giver som paramter til en anden funktion
+= det at man giver en funktion ivdere til en anden funktion - og den bliver så MULIGVIS kaldt med det samme eller senere
+
+
+MySQL i node
+    - vi laver en forbindelse i én fil og så kan vi bruge forbindelsen fra andre filer
+    - vi opretter forbindelsen i: connectMysql.js og så importerer vi den i app.js
+    - hvis vi importererr connection i flere filer, så bruger den DEN SAMME forbindelse - den laver forbindelsen og casher den, så forbindelsen fungerer i pricinp som singelton
+
+
+SQL statements
+    man behøver ikke skrive navnene på alle kolonnerne, hvis at man overfører en værdi til ALLE kolonner:
+    hvis forholdet mellem kolonner i db og de data man overfører er det samme kan man bare skrive () og ikke (name, id, osv)
+    denne linje er ikke sikker mod sql injection - vi tager bare råt imod whatever data vi får fra clienten:
+        const school = await connection.execute(`INSERT INTO schools VALUES ('${req.body.schoolName}')`);
+    Vi forventer at vi får et obj som sår sådan ud: {schoolName: "CBS"}
+    Løsningen er at vi skal escape det! Via PreparedStatement!!! - vi indsætter de potentielt usikre data via spørgsmålstegn og så tjekker den selv for injection
+
+
+
+DET HER LIGGER I PROJEKTET FOR 44WEEK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+connectMysql - SIKKERHED IFT: at man ikke skal pushe user og password til database
+    Det er ikke særligt sikkert hvis dette bliver pushet op! 
+    Hvordan løser vi det?
+        - vi lægger det ud i en fil, som vi så ikke pusher med op og så henter vi dem derfra
+        - i gitignore blev der automatisk indsæt filer med slutningen: .env og .env.test
+            - når vi orpetter den skal vi IKKE give den et navn, fordi
+                - den bliver kun ignoreret som .env i gitignore
+                - anden grund
+                - tredje grund
+            - fordi så bliver den ignoreret
+            - .env er noget som bliver kørt når man starter applikationen, og så injecter den variabler rundt omkring hvor der er brug for det 
+            - vi skal installere pakken der hedder .env, som sørger for den injection-process
+        - vi skal lave denne env så tidligt som muligt at den bare injecter det i 
+        - så snart den er injectet i mit environment, så er det værdier jeg bare har adgang til
+
+        - how:
+            - opret fil som bare hedder: .env
+                - opret variabler derinde (ingen strings, ingen quotes, ingen tal)
+            - skriv i app.js:
+                dotenv.config();
+
+        TIL GENGÆLD, så bliver man så nødt til at fortælle andre, at de skal oprette den fil og hvad variablerne skal hedder, når de skal hente og køre programmet            
+            - så derfor man opretter en fil der hedder: .env_sample
+            - og så propper man de variabler ind som skal proppes ind
+
+
+
+SIKKERHED
+    - PreparedStatements
+    - undgå sql injections
+    - undgå at leake noget data som ikke skal leakes (== sikker data det skal ikke pushes op i skyen)
+
+
+
+
+I UGE 48 PROJEKTET!!!!!!!!!!!!!
+Sockets
+    - ikke det samme som det i teknologi - det her vi skal snakke om hedder websockets
+    - websockets = kommunikationsprotokol mellem client og server
+    - vi har tidligere brugt fetch fra client og sendt fetch til - at client spørger server om data og den sender data tilbage
+        -  -det vi skal NU er at serveren unprompted sender noget dtaa til client!!!!!!
+    - websockets = fuld duplexkommunikation (frem OG tilbage)
+    - sockets vil sige at 
+
+    - Anders er fan a Socket io (eksisterer i mange sprog)
+
+    installer socket:
+        npm i socket.io
+
+
+        npm i express
+    
+
+
+    Vi sætter express op sådan her:
+
+        import express from 'express';
+        const app = express();
+
+
+        app.listen('8080', (error) => {
+            error ? console.log("Error in starting server", error) : console.log("Starting server on PORT 8080");;
+        })
+
+    SÅDAN SÆTTER VI IKKE SOCKET SERVER OP - det gør vi sådan her:
+
+
+
+
+IKKE var, fordi så kommer det udenom function scope
+let og const er functions scope
+var går ud fra foorloopets scope - i varaibles.js - så i for(var i = 0) -- der vil den printe 6, 6, 6, 6, 6, 6, fordi der går 1 sek, den bliver sat til 6 og så printer den 6 ud
+    - og den gør derfor IKKE hvad vi forventer at den vil gøre
+
+
+LÆS INDE I APP.JS i 48week --> Sockets --> app.js
+  // color == den data vi har fået sendt fra client
+    socket.on("a client chose a colour", (color) => {
+        console.log(color);
+        // vi sender farven tilbage til clienten igen
+        // den emitter kun den DEN SPECIFIKKE SOCKET - socket == en tab
+        socket.broadcast.emit("the server is sending the new color", color);
+        // io.emit == sender til ALLE sockets
+        // socket.broadcast.emit == broadcaster den ud til alle andre sockets - men ikke til den selv
+        // socker.emit == sneder kun tilbage til DEN socket
+
+
+Namespace
+    - 
+        - i dette namespace kan man have forskellige rooms (= sockets)
+
+
+Crosssite scripting == at nogen prøver på at skrive noget script-noget som så bliver vist på vores side
+    - fx hvis vi har et inputfelt, som folk så skriver script-kode i, så skal vi escape den data og så køre escapeHTML på den
+    - det er derfor vi bruger escapeHTML 
+    - vi skal escape den på server-side - fordi 
+    - INSTALLER:
+        npm i escape-html
+
+
+
+callback funktioner
+    - det er at vi fragiver os kontrollen - vi giver en funktion som express kan kalde
+        - her er en funktion: kald den når den rammer dette endpoint
+    - det er når man ikke kan definere en funk og kalde den med det samme, fordi man ved ikke hvnornår den skal udføres
+    - kode kører jo sekvensielt normalt = en linje ad gangen
+    - det er browseren som kalder callbacksene, i mine eventListeners
+
+
+NoSQL_Databases (== alle andre end relationelle databaser - alt som ikke er sql (som bare er sådan resten))
+    - hvilke db kender vi til?
+        - MySQL
+        - MongoDB
+        - MariaDB
+        - sqlite
+    - Hvad er en relational db?
+        - tabeller har relationer til hinanden - de er afhængige af hinanden - foreign keys
+    - NoSql db
+        - bare alt andet
+        - der er forskellige typer:
+            - dokument db
+                - gemmer json-data som er i dokumenter
+            - object db
+                - serialiserer hele objekter og gemmer dem ned
+            - embedded
+            - in-memory
+    - i sql skal man virkelig bruge tid på først at tænke db'en igennem
+    - i mongodb gemmer man bare js-obj - så der skal man ikke først gøre alt tænke-forarbejdet som man skal med relationelle db'er
+
+Db normalisering
+    - postal codes
+    - 
+
+
+    det der er tidssensitivt er at LÆSE data og ikke at opdatere data - fordi det sker jo bagom i systemet
+
+
+Download mongodb
+    - cd ind i programmer --> mongodb --> bin --> kør mongod (køres via terminalen ved at ./mongod)
+
+
+Eksamen
+    - vi skal kunne forstå hvad forskellene er på db
+    - vi skal kunne retfærdiggøre hvorfor vi har valgt lige netop den db
+
