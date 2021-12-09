@@ -1,0 +1,11 @@
+.logo-image {
+    height: 100px;
+}
+
+main {
+    min-height: calc(100vh - 150px - 100px);
+    width: 100vw;
+    position: relative;
+    left: 0;
+    background-color: rgb(224, 224, 224);
+}
